@@ -45,7 +45,7 @@ var cities= JSON.parse(localStorage.getItem("city-array")) || ["Denver"];
 
 function initMap() {
       var apiKey= "c531a4a9070baad7f4ef978c43984633";
-      var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=Denver&units=imperial&APPID="+apiKey;
+      var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=Denver&units=imperial&APPID="+apiKey;
         $.ajax({
           url: queryURL,
           method: "GET"
@@ -53,7 +53,7 @@ function initMap() {
           .then(function(response) {
         var lat= localStorage.setItem("lat", JSON.stringify(response.city.coord.lat));
         var lon= localStorage.setItem("lon", JSON.stringify(response.city.coord.lon));
-         var icon= "http://openweathermap.org/img/w/"+response.list[0].weather[0].icon+".png"
+         var icon= "https://openweathermap.org/img/w/"+response.list[0].weather[0].icon+".png"
           $("#temp").text("Temperature: "+response.list[0].main.temp+" ℉");
           $("#hum").text("Humidity: "+response.list[0].main.humidity+"%")
           $("#wind").text("Wind Speed: "+response.list[0].wind.speed+" MPH")
@@ -63,7 +63,7 @@ function initMap() {
           console.log(response);
 
           for(var i= 1; i<39; i+=8){
-          var icon= "http://openweathermap.org/img/w/"+response.list[i].weather[0].icon+".png"
+          var icon= "https://openweathermap.org/img/w/"+response.list[i].weather[0].icon+".png"
           var weatherDate= moment(response.list[i].dt_txt).format('MM-DD')
           $("#five-day").append("<div"+[i]+" class='card'></div>")
           $("div"+[i]).append("<div class='temp'>"+weatherDate+"</div>");
@@ -76,7 +76,7 @@ function initMap() {
       
         var lat= JSON.parse(localStorage.getItem("lat"))
         var lon= JSON.parse(localStorage.getItem("lon"))
-        var queryURL2= "http://api.openweathermap.org/data/2.5/uvi?appid=c531a4a9070baad7f4ef978c43984633&lat="+lat+"&lon="+lon
+        var queryURL2= "https://api.openweathermap.org/data/2.5/uvi?appid=c531a4a9070baad7f4ef978c43984633&lat="+lat+"&lon="+lon
         
         
         $.ajax({
@@ -106,7 +106,7 @@ for (var i = 0; i < cities.length; i++) {
       e.preventDefault();
       var city = $(this).attr("data-city");
       var apiKey= "c531a4a9070baad7f4ef978c43984633";
-      var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q="+city+"&units=imperial&APPID="+apiKey;
+      var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&units=imperial&APPID="+apiKey;
 
         $.ajax({
           url: queryURL,
@@ -115,7 +115,7 @@ for (var i = 0; i < cities.length; i++) {
           .then(function(response) {
           var lat= localStorage.setItem("lat", JSON.stringify(response.city.coord.lat));
           var lon= localStorage.setItem("lon", JSON.stringify(response.city.coord.lon));
-          var icon= "http://openweathermap.org/img/w/"+response.list[0].weather[0].icon+".png"
+          var icon= "https://openweathermap.org/img/w/"+response.list[0].weather[0].icon+".png"
           $("#temp").text("Temperature: "+response.list[0].main.temp+" ℉");
           $("#hum").text("Humidity: "+response.list[0].main.humidity+"%")
           $("#wind").text("Wind Speed: "+response.list[0].wind.speed+" MPH")
@@ -123,7 +123,7 @@ for (var i = 0; i < cities.length; i++) {
           $("#city").append('<img src='+icon+'>');
 
           for(var i= 1; i<39; i+=8){
-          var icon= "http://openweathermap.org/img/w/"+response.list[i].weather[0].icon+".png"
+          var icon= "https://openweathermap.org/img/w/"+response.list[i].weather[0].icon+".png"
           var weatherDate= moment(response.list[i].dt_txt).format('MM-DD')
           $("#five-day").append("<div"+[i]+" class='card'></div>")
           $("div"+[i]).append("<div class='temp'>"+weatherDate+"</div>");
@@ -135,7 +135,7 @@ for (var i = 0; i < cities.length; i++) {
         });
         var lat= JSON.parse(localStorage.getItem("lat"))
         var lon= JSON.parse(localStorage.getItem("lon"))
-        var queryURL2= "http://api.openweathermap.org/data/2.5/uvi?appid=c531a4a9070baad7f4ef978c43984633&lat="+lat+"&lon="+lon
+        var queryURL2= "https://api.openweathermap.org/data/2.5/uvi?appid=c531a4a9070baad7f4ef978c43984633&lat="+lat+"&lon="+lon
         
         
         $.ajax({
@@ -152,7 +152,7 @@ for (var i = 0; i < cities.length; i++) {
       $("#five-day").empty();
       var apiKey= "c531a4a9070baad7f4ef978c43984633";
       var city = $("#city-input").val().trim();
-      var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q="+city+"&units=imperial&APPID="+apiKey;
+      var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&units=imperial&APPID="+apiKey;
 
       $.ajax({
         url: queryURL,
@@ -161,7 +161,7 @@ for (var i = 0; i < cities.length; i++) {
         .then(function(response) {
         var lat= localStorage.setItem("lat", JSON.stringify(response.city.coord.lat));
         var lon= localStorage.setItem("lon", JSON.stringify(response.city.coord.lon));
-        var icon= "http://openweathermap.org/img/w/"+response.list[0].weather[0].icon+".png"
+        var icon= "https://openweathermap.org/img/w/"+response.list[0].weather[0].icon+".png"
         $("#temp").text("Temperature: "+response.list[0].main.temp+" ℉");
           $("#hum").text("Humidity: "+response.list[0].main.humidity+"%")
           $("#wind").text("Wind Speed: "+response.list[0].wind.speed+" MPH")
@@ -174,7 +174,7 @@ for (var i = 0; i < cities.length; i++) {
         renderButtons();
 
         for(var i= 1; i<39; i+=8){
-          var icon= "http://openweathermap.org/img/w/"+response.list[i].weather[0].icon+".png"
+          var icon= "https://openweathermap.org/img/w/"+response.list[i].weather[0].icon+".png"
           var weatherDate= moment(response.list[i].dt_txt).format('MM-DD')
           $("#five-day").append("<div"+[i]+" class='card'></div>")
           $("div"+[i]).append("<div class='temp'>"+weatherDate+"</div>");
@@ -185,7 +185,7 @@ for (var i = 0; i < cities.length; i++) {
         });
         var lat= JSON.parse(localStorage.getItem("lat"))
         var lon= JSON.parse(localStorage.getItem("lon"))
-        var queryURL2= "http://api.openweathermap.org/data/2.5/uvi?appid=c531a4a9070baad7f4ef978c43984633&lat="+lat+"&lon="+lon
+        var queryURL2= "https://api.openweathermap.org/data/2.5/uvi?appid=c531a4a9070baad7f4ef978c43984633&lat="+lat+"&lon="+lon
         
         
         $.ajax({
